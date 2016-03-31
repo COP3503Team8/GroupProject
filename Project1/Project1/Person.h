@@ -9,7 +9,7 @@ protected:
 public:
 	Person(int health) :health(health),xLocation(0),yLocation(0){} //TODO set default value
 	Person(int health, int xLocation, int yLocation):health(health),xLocation(xLocation),yLocation(yLocation){}
-	void setHealth(int health);
+	virtual void setHealth(int health);
 	int getHealth();
 	void setLocation(int x, int y);
 	void setxLocation(int x);
