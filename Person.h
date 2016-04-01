@@ -11,7 +11,7 @@ public:
 	Person(int health, int xLocation, int yLocation):health(health),xLocation(xLocation),yLocation(yLocation){}
 	virtual void setHealth(int health);
 	int getHealth();
-	void setLocation(int x, int y);
+	void setLocation(int *loc);
 	void setxLocation(int x);
 	void setyLocation(int y);
 	int getxLocation();
@@ -30,9 +30,9 @@ int Person::getHealth() {
 	return this->health;
 }
 
-void Person::setLocation(int x, int y) {
-	this->xLocation = x;
-	this->yLocation = y;
+void Person::setLocation(int *loc) {
+	this->xLocation = loc[0];
+	this->yLocation = loc[1];
 	return;
 }
 
