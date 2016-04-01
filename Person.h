@@ -55,8 +55,9 @@ int Person::getyLocation() {
 }
 
 int* Person::getLocation(){
-	int * location[2] = { xLocation, yLocation };
-	return location;
+	int location[2] = { xLocation, yLocation };
+	int* ptr = location;
+	return ptr;
 }
 
 #endif // !PERSON_H
