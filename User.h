@@ -53,28 +53,28 @@ void User::setHealth(int health) {
 void User::move(char dir, char **map) {
 	//TODO figure out location system
 	if (dir == 'w') {
-		if(map[xLocation][yLocation - 1] != #){
+		if(map[xLocation][yLocation - 1] != '#'){
 			return;
 		}
 		this->yLocation -= 1;
 		return;
 	}
 	else if(dir == 'a') {
-		if(map[xLocation - 1][yLocation] != #){
+		if(map[xLocation - 1][yLocation] != '#'){
 			return;
 		}
 		this->xLocation -= 1;
 		return;
 	}
 	else if (dir == 's') {
-		if(map[xLocation][yLocation + 1] != #){
+		if(map[xLocation][yLocation + 1] != '#'){
 			return;
 		}
 		this->yLocation += 1;
 		return;
 	}
 	else if (dir == 'd') {
-		if(map[xLocation + 1][yLocation] != #){
+		if(map[xLocation + 1][yLocation] != '#'){
 			return;
 		}
 		this->xLocation += 1;

@@ -4,6 +4,7 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
+#include "User.h"
 
 using namespace std;
 
