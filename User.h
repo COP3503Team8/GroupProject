@@ -8,6 +8,8 @@ private:
 	int level;
 	int maxHealth;
 public:
+	User(int health, int x, int y);
+	User(int x, int y);
 	void setMaxHealth(int maxHealth);
 	int getMaxHealth();
 	void setHealth(int health);
@@ -16,6 +18,18 @@ public:
 	bool getInBattle();
 	void toggleInBattle();
 };
+
+User::User(int health, int x, int y){
+	this->health = health;
+	this->xLocation = x;
+	this->yLocation = y;
+}
+
+User::User(int x, int y){
+	this->health = 100;
+	this->xLocation = x;
+	this->yLocation = y;
+}
 
 void User::setMaxHealth(int maxHealth) {
 	this->maxHealth = maxHealth;
