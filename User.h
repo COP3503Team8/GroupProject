@@ -11,7 +11,7 @@ public:
 	void setMaxHealth(int maxHealth);
 	int getMaxHealth();
 	void setHealth(int health);
-	void move(char dir);
+	void move(char dir, char **map);
 	void levelUp();
 	bool getInBattle();
 	void toggleInBattle();
@@ -36,21 +36,33 @@ void User::setHealth(int health) {
 	return;
 }
 
-void User::move(char dir) {
+void User::move(char dir, char **map) {
 	//TODO figure out location system
 	if (dir == 'w') {
+		if(map[xLocation][yLocation - 1] != #){
+			return;
+		}
 		this->yLocation -= 1;
 		return;
 	}
 	else if(dir == 'a') {
+		if(map[xLocation - 1][yLocation] != #){
+			return;
+		}
 		this->xLocation -= 1;
 		return;
 	}
 	else if (dir == 's') {
+		if(map[xLocation][yLocation + 1] != #){
+			return;
+		}
 		this->yLocation += 1;
 		return;
 	}
 	else if (dir == 'd') {
+		if(map[xLocation + 1][yLocation] != #){
+			return;
+		}
 		this->xLocation += 1;
 		return;
 	}
