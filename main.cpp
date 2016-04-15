@@ -10,9 +10,9 @@ int main() {
     int floorNum = 1;
     char dir;
     
-    while (floorNum <= 6) {
+    while (floorNum <= 6 && (player->getHealth() != 0)) {
         Floor* currFloor = new Floor(floorNum);
-        while (true) {
+        while (true && (player->getHealth() != 0)) {
             currFloor->getCurrRoom()->printRoom();
             cin>>dir;
             
@@ -33,9 +33,13 @@ int main() {
             if(dir == q) {
                 menu(player, floorNum);
             }
-            
         }
     }
     
+    cout << "Game Over" << endl;
+    
+    if(floorNum == 6 && (player->getHealth() != 0)){
+        cout << "You Win!!!! YAYYYYYY!!!! (Now play again)";
+    }
     return 0;
 }
