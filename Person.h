@@ -16,7 +16,7 @@ public:
 	void setyLocation(int y);
 	int getxLocation();
 	int getyLocation();
-	int* getLocation();
+	// int* getLocation();
 };
 
 void Person::setHealth(int health) {
@@ -54,10 +54,10 @@ int Person::getyLocation() {
 	return this->yLocation;
 }
 
-int* Person::getLocation(){
-	int location[2] = { xLocation, yLocation };
-	int* ptr = location;
-	return ptr;
-}
+// int* Person::getLocation(){
+// 	int location[2] = { xLocation, yLocation };
+// 	int* ptr = location;
+// 	return ptr;
+// }
 
 #endif // !PERSON_H
