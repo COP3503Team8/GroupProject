@@ -11,8 +11,9 @@ private:
 	int xp;
 	int potion;
 public:
-	User(int health, int x, int y);
-	User(int x, int y);
+	User(int health, int x, int y):Person(health, x, y){};
+	User(int x, int y):Person(100, x, y){};
+	User():Person(100, 40, 10){};
 	void setMaxHealth(int maxHealth);
 	int getMaxHealth();
 	void setHealth(int health);
@@ -25,29 +26,11 @@ public:
 	void levelUp();
 	bool getInBattle();
 	void toggleInBattle();
-	void killEnemy();
-	void killBoss();
+	void xpEnemy();
+	void xpBoss();
 	void addPotion();
 	void usePotion();
 };
-
-User::User(int health, int x, int y){
-	this->health = health;
-	this->xLocation = x;
-	this->yLocation = y;
-}
-
-User::User(int x, int y){
-	this->health = 100;
-	this->xLocation = x;
-	this->yLocation = y;
-}
-
-User::User(){
-	this->health = 100;
-	this->xLocation = 40;
-	this->yLocation = 10;
-}
 
 int User::getMaxHealth() {
 	return this->maxHealth;
@@ -139,7 +122,7 @@ void User::xpEnemy(){
 	xp += 10;
 	return;
 }
-void User::killBoss(){
+void User::xpBoss(){
 	xp += 50;
 	return;
 }
