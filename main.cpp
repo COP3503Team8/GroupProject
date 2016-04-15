@@ -1,16 +1,20 @@
-#include<iostream>
-//and other stuff
+#include <iostream>
+#include "Print.h"
+#include "User.h"
+//include moving library
+
+using namespace std;
 
 int main() {
-    user* player = new User();
+    User* player = new User();
     int floorNum = 1;
     char dir;
     
     while (floorNum <= 6) {
-        Floor* currFloor = newFloor(floorNum);
+        Floor* currFloor = new Floor(floorNum);
         while (true) {
             currFloor->getCurrRoom()->printRoom();
-            std::cin>>dir;
+            cin>>dir;
             
             //input validation
             player->move(dir);
@@ -22,12 +26,12 @@ int main() {
             if (at a door) {
                 move(dir);
             }
-            if (at stairs) break;
-            florNum += 1;
-            break;
-            
+            if (atStairs){
+                floorNum += 1;
+                break;
+            }
             if(dir == q) {
-                openMenu(player, currFloor);
+                menu(player, floorNum);
             }
             
         }

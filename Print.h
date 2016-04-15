@@ -2,20 +2,22 @@
 #define PRINT_h
 
 #include <iostream>
+#include "Inventory.h"
 
 using namespace std;
 
-public:
-    void pauseMenu(){
-        cout << "Player 1's Stats";
-        printInventory();
-        printPlayerStats();
+void menu(User* user, int currentFloor){
+    cout << "Current Floor: " << currentFloor << endl;
+    cout << "Player 1's Stats";
+    printPlayerStats(user);
+    printInventory(user);
     }
 
-    void printPlayerStats(){
-        cout << "Health: " << getCurrentUserHealth << "/" << getMaxHealth() << endl;
-        cout << "Level: " << getLevel << endl;
-    }
+void printPlayerStats(User* user){
+    cout << "Health: " << user->getHealth() << "/" << user->getMaxHealth() << endl;
+    cout << "Level: " << user->getLevel << endl;
+    cout << "Needed EXP to Level Up: " << user->getNeededEXP() << endl;
+}
 
 
 #endif
