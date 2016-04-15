@@ -1,4 +1,7 @@
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Print.h"
 #include "User.h"
 //include moving library
@@ -6,6 +9,7 @@
 using namespace std;
 
 int main() {
+    srand(time(NULL));
     User* player = new User();
     int floorNum = 1;
     char dir;
@@ -17,7 +21,7 @@ int main() {
             cin>>dir;
             
             //input validation
-            player->move(dir);
+            player->move(dir, currFloor);
             if (player->getLocation() == /*enemy location*/) {
                 battle(player, floorNum, /*enemy type*/);
             }
