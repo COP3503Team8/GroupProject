@@ -3,6 +3,7 @@
 #include "User.h"
 #include "floor.h"
 #include "BattleClass.h"
+#include "Print.h"
 
 int main() {
 	User* player = new User();
@@ -17,7 +18,7 @@ int main() {
             
             //input validation
             if(dir == 'q') {
-                openMenu(player, currFloor);
+                menu(player, currFloor);
                 continue;
             }
 
