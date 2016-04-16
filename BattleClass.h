@@ -33,7 +33,7 @@ public:
 		baseDamage = 5;
 		enemyHealth = 0;
 		tempUserHealth = 0;
-		potionChacne = 0;
+		potionChance = 0;
 
 	}
 
