@@ -37,8 +37,8 @@ public:
 
 	Room* getCurrRoom() {
 		for (int i = 0; i < roomList.size(); i++) {
-			if ((roomList.at(i)->x == playerLoc[0]) && (roomList.at(i)->x == playerLoc[1])) {
-				return roomList.at(i);
+			if ((roomList.at(i)->coords[0] == playerLoc[0]) && (roomList.at(i)->coords[1] == playerLoc[1])) {
+				return (roomList.at(i)->room);
 			}
 		}
 
@@ -161,7 +161,7 @@ public:
 
 			}
 			roomsLeft -= 1;
-			for (int i = 0; i < validRooms.size(); i++) {
+			for (unsigned int i = 0; i < validRooms.size(); i++) {
 							delete[] validRooms.at(i);
 						}
 			validRooms.clear();
