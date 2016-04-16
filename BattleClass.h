@@ -82,7 +82,7 @@ public:
 			else if(battleChoice.compare("2") == 0)
 			{
 				//The user uses a potion which brings them to full health and then gives the enemy a chance to attack
-				usePotion();
+				UsePotion();
 				enemyAttck(floorNum, enemyType);
 				if(User.getHealth <= 0)
 				{
@@ -98,7 +98,7 @@ public:
 			else if(battleChoice.compare("4") == 0)
 			{
 				//attempts to run, if it works the battle ends and if not the enemy can attack
-				run();
+				run(floorNum, enemyType);
 				if(User.getHealth() <= 0)
 				{
 					//if the run is unsuccessful and the enemy's attack kills the user the battle is over
@@ -118,7 +118,7 @@ public:
 					if(enemyType == '!')
 					{
 						//if the enemy was a regular enemy it will have a 10% chance of dropping a potion (call potion increment from Michael)
-						potionChance = (rand () % 4) + 1
+						potionChance = (rand () % 4) + 1;
 						if(potionChance == 1)
 						{
 							cout<<"You earned a potion for defeating your opponent!"<<endl;
@@ -161,7 +161,7 @@ public:
 		else if(enemyType == 'B')
 		{
 			//if enemy is a boss their health will be 20 times the floor number
-			enemyHealth = (floorNum * 20)
+			enemyHealth = (floorNum * 20);
 		}
 		else
 		{
@@ -206,7 +206,7 @@ public:
 
 	void enemyDamage(int floorNum, char enemyType)
 	{
-		tempUserHealth = User->getHealth();
+		tempUserHealth = User.getHealth();
 		if(enemyType = '!')
 		{
 			//calcualtes the damage of a regular enemy's attack based on floor number and base damage
@@ -259,7 +259,7 @@ public:
 		Print.printPlayerStats(user);
 	}
 
-	void run()
+	void run(int floorNum, char enemyType)
 	{
 		//calculates the user's cahcne of running away from the battle successfully
 		runChance = (rand () %  3) + 1;
