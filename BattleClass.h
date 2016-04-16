@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef BATTLECLASS_H
 #define BATTLECLASS_H
 #include <iostream>
@@ -68,7 +67,7 @@ public:
 				{
 					//if the user's attack doesn't kill the enemy the enemy can attack back
 					enemyAttack(floorNum, enemyType);
-					if(User->getHealth() <= 0)
+					if(User.getHealth() <= 0)
 					{
 						//if the enemy's attack kills the user the battle is over
 						inBattle = false;
@@ -100,7 +99,7 @@ public:
 			{
 				//attempts to run, if it works the battle ends and if not the enemy can attack
 				run();
-				if(User->getHealth() <= 0)
+				if(User.getHealth() <= 0)
 				{
 					//if the run is unsuccessful and the enemy's attack kills the user the battle is over
 					inBattle = false;
@@ -110,7 +109,7 @@ public:
 			{
 				cout<<endl;
 				cout<<"Battle over!!"<<endl;
-				if(Person->getHealth <= 0)
+				if(Person.getHealth() <= 0)
 					{
 						cout<<"You Lose!!"<<endl;
 					}
@@ -123,10 +122,10 @@ public:
 						if(potionChance == 1)
 						{
 							cout<<"You earned a potion for defeating your opponent!"<<endl;
-							User->addPotion();
+							User.addPotion();
 							//you gain xp from defeating a regular enemy
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
-							User->xpEnemy();
+							User.xpEnemy();
 							cout<<endl;
 						}
 						else
@@ -138,10 +137,10 @@ public:
 					{
 						//if the enemy is a boss it will always drop a potion (call potion increments potion from Michael)
 						cout<<"You earned a potion for defeating you opponent!"<<endl;
-						User->addPotion();
+						User.addPotion();
 						//you gain xp from beating a boss
 						cout<<"You earned 50 XP from defeating your opponent!"<<endl;
-						User->xpBoss();
+						User.xpBoss();
 						cout<<endl;
 					}
 				}
@@ -219,7 +218,7 @@ public:
 			damageDone = baseDamage + (rand () % (6 + floorNum)) + floorNum;
 		}
 		tempUSerHealth = (tempUserHealth - damageDone);
-		User->setHealth(tempUserHealth);
+		User.setHealth(tempUserHealth);
 	}
 
 	void enemyAttack(int floorNum, char enemyType)
@@ -250,14 +249,14 @@ public:
 	void UsePotion()
 	{
 		//User uses a potion and then enemy gets a chance to atttack
-		User->usePotion();
+		User.usePotion();
 	}
 	
 
 	void displayStats(User* user)
 	{
 		//Lets the user see their stats
-		Print->printPlayerStats(user);
+		Print.printPlayerStats(user);
 	}
 
 	void run()
@@ -281,4 +280,3 @@ public:
 
 #endif
 
->>>>>>> 85ca8495d236bac8b6fe38bda8c90f673ae4e803
