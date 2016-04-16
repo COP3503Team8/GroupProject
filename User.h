@@ -2,6 +2,8 @@
 #define USER_H
 #include "Person.h"
 
+class Inventory;
+
 class User : public Person {
 	friend Inventory;
 private:
