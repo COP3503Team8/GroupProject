@@ -25,19 +25,19 @@ public:
 
 	Battle()
 	{
-		bool inBattle = true;
-		string battleChoice;
-		int attackChance = 0;
-		int runChance = 0;
-		int damageDone = 0;
-		int baseDamage = 5;
-		int enemyHealth = 0;
-		int tempUserHealth = 0;
-		int potionChacne = 0;
+		inBattle = true;
+		battleChoice;
+		attackChance = 0;
+		runChance = 0;
+		damageDone = 0;
+		baseDamage = 5;
+		enemyHealth = 0;
+		tempUserHealth = 0;
+		potionChacne = 0;
 
 	}
 
-		void battleScreen(User* user, int userLevel, int floorNum, char enemyType)
+		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType)
 	{
 		cout<<"You have encountered an enemy!"<<endl;
 		createEnemy(floorNum, enemyType);
@@ -115,7 +115,7 @@ public:
 					}
 				else if(enemyHealth <= 0)
 				{
-					if(enemyType == '!')
+					if(!enemyType)
 					{
 						//if the enemy was a regular enemy it will have a 10% chance of dropping a potion (call potion increment from Michael)
 						potionChance = (rand () % 10) + 1;
@@ -134,7 +134,7 @@ public:
 							cout<<"Your opponent did not drop a potion"<<endl;
 						}
 					}
-					else if(enemyType == 'B')
+					else if(enemyType)
 					{
 						//if the enemy is a boss it will always drop a potion (call potion increments potion from Michael)
 						cout<<"You earned a potion for defeating you opponent!"<<endl;
@@ -152,15 +152,15 @@ public:
 		}
 	}
 
-	//"creates" the enemy which the user is battling by givng it a set amount of health based on floor and char type
-	void createEnemy(int floorNum, char enemyType)
+	//"creates" the enemy which the user is battling by givng it a set amount of health based on floor and bool (boos or not)
+	void createEnemy(int floorNum, bool enemyType)
 	{
-		if(enemyType == '!')
+		if(!enemyType)
 		{
 			//if the enemy is a regular enemy they their health is their floor number times 10
 			enemyHealth = (floorNum * 10);
 		}
-		else if(enemyType == 'B')
+		else if(enemyType)
 		{
 			//if enemy is a boss their health will be 20 times the floor number
 			enemyHealth = (floorNum * 20);
@@ -206,15 +206,15 @@ public:
 		}
 	}
 
-	void enemyDamage(User* user, int floorNum, char enemyType)
+	void enemyDamage(User* user, int floorNum, bool enemyType)
 	{
 		tempUserHealth = user->getHealth();
-		if(enemyType = '!')
+		if(!enemyType)
 		{
 			//calcualtes the damage of a regular enemy's attack based on floor number and base damage
 			damageDone = baseDamage + (rand () % (3 + floorNum)) + floorNum;
 		}
-		if(enemyType = 'B')
+		if(enemyType)
 		{
 			//calculates the damage of a boss enemy's attack based on floor number and base damage
 			damageDone = baseDamage + (rand () % (6 + floorNum)) + floorNum;
@@ -223,7 +223,7 @@ public:
 		user->setHealth(tempUserHealth);
 	}
 
-	void enemyAttack(User* user, int floorNum, char enemyType)
+	void enemyAttack(User* user, int floorNum, bool enemyType)
 	{
 		//calculates whether or not the enemy's attack hits
 		attackChance = (rand () % 10) + 1;
@@ -261,7 +261,7 @@ public:
 		printPlayerStats(user);
 	}
 
-	void run(User* user, int floorNum, char enemyType)
+	void run(User* user, int floorNum, bool enemyType)
 	{
 		//calculates the user's cahcne of running away from the battle successfully
 		runChance = (rand () %  3) + 1;
