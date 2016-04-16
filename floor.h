@@ -1,14 +1,30 @@
+#ifndef floor_h
+#define floor_h
+
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
 #include <stdexcept>
+#include "room.h"
 
 
 class Floor {
+	struct roomWithCoords{
+		int* coords;
+		Room* room;
+		roomWithCoords(int x, int y, Room* roomToAdd) {
+			room = roomToAdd;
+			coords = new int[2];
+			coords[0] = x;
+			coords[1] = y;
+
+		}
+	};
 private:
 	int* playerLoc;
 	int ** map; //1 means a room is at the location, 2 means it's the end room
+	std::vector<roomWithCoords*> roomList;
 public:
 	~Floor() {
 		delete[] playerLoc;
@@ -18,30 +34,41 @@ public:
 		delete[] map;
 
 	}
-	void changeRoom(char dir) //takes in 'u', 'd', 'l', 'r' 
+
+	Room* getCurrRoom() {
+		for (int i = 0; i < roomList.size(); i++) {
+			if ((roomList.at(i)->x == playerLoc[0]) && (roomList.at(i)->x == playerLoc[1])) {
+				return roomList.at(i);
+			}
+		}
+
+		throw std::logic_error("no Current Room?");
+	}
+
+	void changeRoom(int dir) //// 1 for up, -1 for down, 2 for right, -2 for left
 	{
-		if (dir == 'u') {
+		if (dir == 1) {
 			if (map[playerLoc[1]-1][playerLoc[0]] == 1) {
 				playerLoc[1] -= 1;
 			}
 		}
-		else if (dir == 'd') {
+		else if (dir == -1) {
 			if (map[playerLoc[1]+1][playerLoc[0]] == 1) {
 				playerLoc[1] += 1;
 			}
 		}
-		else if (dir == 'l') {
+		else if (dir == -2) {
 			if (map[playerLoc[1]][playerLoc[0]-1] == 1) {
 				playerLoc[0] -= 1;
 			}
 		}
-		else if (dir == 'r') {
+		else if (dir == 2) {
 			if (map[playerLoc[1]][playerLoc[0]+1] == 1) {
 				playerLoc[0] += 1;
 			}
 		}
 		else {
-			throw std::invalid_argument("changeRoom must take u,d,l,r");
+			throw std::invalid_argument("changeRoom must take -2,-1,1,2");
 		}
 	}
 
@@ -115,13 +142,22 @@ public:
 			}
 			if (validRooms.size() == 0) {
 				map[10][10] = 2;
+				Room* tempRoom = new BossRoom();
+				roomList.push_back(new roomWithCoords(10, 10, tempRoom));
+
 				break;
 			}
 			int* nextRoom = validRooms.at(rand() % validRooms.size());
+			if (roomsLeft != 1) {
+				map[nextRoom[1]][nextRoom[0]] = 1;
+				Room* tempRoom= new Room();
+				roomList.push_back(new roomWithCoords(nextRoom[0], nextRoom[1], tempRoom));
 
-			map[nextRoom[1]][nextRoom[0]] = 1;
+			}
 			if (roomsLeft == 1) {
 				map[nextRoom[1]][nextRoom[0]] = 2;
+				Room* tempRoom = new BossRoom();
+				roomList.push_back(new roomWithCoords(nextRoom[0], nextRoom[1], tempRoom));
 
 			}
 			roomsLeft -= 1;
@@ -134,3 +170,5 @@ public:
 		playerLoc[0] = 10, playerLoc[1] = 10;
 	}
 };
+
+#endif
