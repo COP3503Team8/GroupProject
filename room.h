@@ -10,12 +10,24 @@
 
 class Room {
 
-private:
+protected:
 	int* playerLoc;
 	int ** map; //1 means a room is at the location, 2 means it's the end room
 	std::vector<int *> monsterList;
 
 public:
+	void setPlayerX(int x) {
+		playerLoc[0] = x;
+	}
+	void setPlayerY(int y) {
+		playerLoc[1] = y;
+	}
+	bool isBoss() {
+		return false;
+	}
+	bool atStairs() {
+		return false;
+	}
 	void moveMonster(int* location) /*-1 will mean unvisited, -2 will mean invalid space */ 
 	//returns 'l' for left, 'r' for right, 'd' for down, 'u' for up, and 's' for no movement
 	{
@@ -163,6 +175,13 @@ public:
 
 	};
 
+	void killMonster(int* coord) {
+		for (int i = 0; i < monsterList.size(); i++) {
+			if ((monsterList.at(i)[0] == coord[0]) && (monsterList.at(i)[1] == coord[1])) {
+				monsterList.erase(monsterList.begin() + i);			}
+		}		
+	}
+
 	void moveAllMonsters() {
 		std::cout << playerLoc[0] << " " << playerLoc[1] << std::endl;
 		for (int i = 0; i < monsterList.size(); i++) {
@@ -178,6 +197,10 @@ public:
 			}
 		}
 		return out;
+	}
+
+	bool playerAtMonster() {
+		return isMonster(playerLoc);
 	}
 
 
@@ -355,6 +378,75 @@ public:
 	}
 
 
+};
+
+
+
+class BossRoom : public Room
+{
+public:
+	BossRoom() {
+		Room();
+		int bossmap [22][22]= {
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+					};
+
+			for (int i = 0; i < 22; i++) {
+				for (int j = 0; j < 22; j++) {
+					map[i][j] = bossmap[i][j];
+				}
+			}
+
+			while (monsterList.size() > 0) {
+				killMonster(monsterList.at(0));
+			}
+			int* bossLoc = new int[2];
+			bossLoc[0] = 11;
+			bossLoc[1] = 13;
+			monsterList.push_back(bossLoc);
+
+	}
+
+	bool atStairs() {
+		if ((playerLoc[0] == 11) && (playerLoc[1] == 11)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
+	void moveMonster() {
+		return;
+	}
+	bool isBoss() {
+		return true;
+	}
+
+	~BossRoom();
+	
 };
 
 
