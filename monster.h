@@ -1,5 +1,6 @@
 #include <queue>
 #include <stdexcept>
+#include "RoomGen.h"
 
 //currRoomLoc is the [x,y] for the current room
 // currRoom is the array for the current room
@@ -11,7 +12,7 @@ private:
 	bool isMonsterAlive;
 public:
 	Monster(int* loc) {
-		if (loc.size() != 2) {
+		if (loc.size() != 2) { //length needs to be passes
 			throw std::invalid_argument("Invalid spawn input");
 		}
 		if ((loc[0] < 0 || loc[0] > currRoom.size()) || loc[1] < 0 || loc[1] > currRoom.size()) {
