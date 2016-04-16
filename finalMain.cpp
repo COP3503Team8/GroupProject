@@ -30,7 +30,7 @@ int main() {
             currFloor->getCurrRoom()->moveAllMonsters();
 
             if (currFloor->getCurrRoom()->playerAtMonster()) {
-                battle(player, floorNum, currFloor->getCurrRoom->isBoss());
+                battle(player, floorNum, currFloor->getCurrRoom()->isBoss());
             }
 
             int door = currFloor->getCurrRoom()->atDoor();
@@ -38,7 +38,7 @@ int main() {
             	currFloor->changeRoom(door);
             	currFloor->getCurrRoom()->spawnPlayerAtDoor(-1*door);
             	int* tempPlayerLoc = currFloor->getCurrRoom()->getPlayerLoc();
-            	player->setLocation(tempPlayerLoc[0], tempPlayerLoc[1])
+            	player->setLocation(tempPlayerLoc[0], tempPlayerLoc[1]);
             }
             if (currFloor->getCurrRoom()->atStairs()) {
             	floorNum += 1;
