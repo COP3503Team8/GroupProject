@@ -12,10 +12,11 @@ private:
 	int maxHealth;
 	int xp;
 	int potion;
+	int requiredXP;
 public:
-	User(int health, int x, int y):Person(health, x, y){}; //Constructor
-	User(int x, int y):Person(100, x, y){}; //Constructor with health 100
-	User():Person(100, 11, 11){}; //Constructor with health 100, x location 11, and y location 11
+	User(int health, int x, int y):Person(health, x, y),inBattle(false),level(1),maxHealth(100),xp(0),potion(0),requiredXP(100){}; //Constructor
+	User(int x, int y):Person(100, x, y),inBattle(false),level(1),maxHealth(100),xp(0),potion(0),requiredXP(100){}; //Constructor with health 100
+	User():Person(100, 11, 11),inBattle(false),level(1),maxHealth(100),xp(0),potion(0),requiredXP(100){}; //Constructor with health 100, x location 11, and y location 11
 	void setMaxHealth(int maxHealth); //Sets maximum health value
 	int getMaxHealth(); //Returns maximum health value
 	void setHealth(int health); //Sets health value
@@ -25,7 +26,7 @@ public:
 	int getXLocation(); //Returns x location
 	int getYLocation(); //Return y location
 	void move(char dir, int **map); //Moves the player. Checks for wall collision
-	void levelUp(); //Levels up the player
+	void checkLevelUp(); //Check to see if player levels up, and levels up the player if so
 	bool getInBattle(); //Returns a bool whether the player is in battle
 	void toggleInBattle(); //Changes the bool saying whether the user is in battle
 	void xpEnemy(); //Increases XP after killing an enemy
@@ -33,6 +34,7 @@ public:
 	void addPotion(); //Gives player a potion
 	void usePotion(); //Uses a potion to restore to full health
 	int getPotions(); //Returns amount of potions
+	int getNeededEXP(); //Returns needed XP
 };
 
 int User::getMaxHealth() {
@@ -112,9 +114,15 @@ void User::move(char dir, int **map) {
 		return;
 	}
 }
-void User::levelUp() {
-	//Levels up the player
-	this->level += 1;
+void User::checkLevelUp() {
+	//Levels up the player if they have enough XP
+	if(xp >= requiredXP){
+		xp -= requiredXP;
+		requiredXP += 10;
+		this->level += 1;
+		maxHealth += 10;
+		health = maxHealth;
+	}
 	return;
 }
 bool User::getInBattle() {
@@ -149,10 +157,14 @@ void User::addPotion(){
 void User::usePotion(){
 	//Uses a potion to restore to full health
 	potion--;
-	health = 100;
+	health = maxHealth;
 }
 int User::getPotions(){
 	 //Returns amount of potions
 	 return potion;
+}
+int getNeededEXP(){
+	//Returns needed XP
+	return neededXP;
 }
 #endif // !USER_H
