@@ -118,7 +118,7 @@ public:
 					if(enemyType == '!')
 					{
 						//if the enemy was a regular enemy it will have a 10% chance of dropping a potion (call potion increment from Michael)
-						potionChance = (rand () % 4) + 1;
+						potionChance = (rand () % 10) + 1;
 						if(potionChance == 1)
 						{
 							cout<<"You earned a potion for defeating your opponent!"<<endl;
@@ -126,6 +126,7 @@ public:
 							//you gain xp from defeating a regular enemy
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
 							User.xpEnemy();
+							User.checkLevelUp();
 							cout<<endl;
 						}
 						else
@@ -141,6 +142,7 @@ public:
 						//you gain xp from beating a boss
 						cout<<"You earned 50 XP from defeating your opponent!"<<endl;
 						User.xpBoss();
+						User.checkLevelUp();
 						cout<<endl;
 					}
 				}
