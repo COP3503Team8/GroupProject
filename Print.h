@@ -14,9 +14,9 @@ void menu(User* user, int currentFloor){
 
 void printPlayerStats(User* user){
     cout << "Player 1's Stats";
-    cout << "Health: " << user->getHealth() << "/" << user->getMaxHealth() << endl;
-    cout << "Level: " << user->getLevel << endl;
-    cout << "Needed EXP to Level Up: " << user->getNeededEXP() << endl;
+    cout << "Health: " << user.getHealth() << "/" << user.getMaxHealth() << endl;
+    cout << "Level: " << user.getLevel() << endl;
+    cout << "Needed EXP to Level Up: " << user.getNeededEXP() << endl;
 }
 
 
