@@ -16,7 +16,7 @@ int main() {
             std::cin>>dir;
             
             //input validation
-            if(dir == q) {
+            if(dir == 'q') {
                 openMenu(player, currFloor);
                 continue;
             }
