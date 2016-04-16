@@ -30,7 +30,7 @@ int main() {
             currFloor->getCurrRoom()->moveAllMonsters();
 
             if (currFloor->getCurrRoom()->playerAtMonster()) {
-                battle(player, floorNum, currFloor->getCurrRoom->isBoss());
+                battle(player, floorNum, currFloor->getCurrRoom()->isBoss());
             }
 
             int door = currFloor->getCurrRoom()->atDoor();
