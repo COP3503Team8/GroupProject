@@ -21,7 +21,7 @@ int main() {
                 continue;
             }
 
-            player->move(dir);
+            player->move(dir, currFloor->getCurrRoom()->getMap());
             currFloor->getCurrRoom()->setPlayerX(player->getXLocation());
             currFloor->getCurrRoom()->setPlayerY(player->getYLocation());
 
