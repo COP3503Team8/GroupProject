@@ -11,14 +11,13 @@ void printPlayerStats(User* user){
     cout << "Health: " << user->getHealth() << "/" << user->getMaxHealth() << endl;
     cout << "Level: " << user->getLevel() << endl;
     cout << "Needed EXP to Level Up: " << user->getNeededEXP() << endl;
+}
 
 void menu(User* user, int currentFloor){
     cout << "Current Floor: " << currentFloor << endl;
     printPlayerStats(user);
     printInventory(user);
     }
-
-}
 
 
 #endif
