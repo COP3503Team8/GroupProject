@@ -66,8 +66,8 @@ public:
 				if(enemyHealth > 0)
 				{
 					//if the user's attack doesn't kill the enemy the enemy can attack back
-					enemyAttack(floorNum, enemyType);
-					if(User.getHealth() <= 0)
+					enemyAttack(user, floorNum, enemyType);
+					if(user->getHealth() <= 0)
 					{
 						//if the enemy's attack kills the user the battle is over
 						inBattle = false;
@@ -82,9 +82,9 @@ public:
 			else if(battleChoice.compare("2") == 0)
 			{
 				//The user uses a potion which brings them to full health and then gives the enemy a chance to attack
-				UsePotion();
-				enemyAttck(floorNum, enemyType);
-				if(User.getHealth <= 0)
+				UsePotion(user);
+				enemyAttack(user, floorNum, enemyType);
+				if(user->getHealth() <= 0)
 				{
 					//if the enemy's attack kills the user the battle is over
 					inBattle = false;
@@ -98,8 +98,8 @@ public:
 			else if(battleChoice.compare("4") == 0)
 			{
 				//attempts to run, if it works the battle ends and if not the enemy can attack
-				run(floorNum, enemyType);
-				if(User.getHealth() <= 0)
+				run(user, floorNum, enemyType);
+				if(user->getHealth() <= 0)
 				{
 					//if the run is unsuccessful and the enemy's attack kills the user the battle is over
 					inBattle = false;
@@ -109,7 +109,7 @@ public:
 			{
 				cout<<endl;
 				cout<<"Battle over!!"<<endl;
-				if(Person.getHealth() <= 0)
+				if(user->getHealth() <= 0)
 					{
 						cout<<"You Lose!!"<<endl;
 					}
@@ -122,11 +122,11 @@ public:
 						if(potionChance == 1)
 						{
 							cout<<"You earned a potion for defeating your opponent!"<<endl;
-							User.addPotion();
+							user->addPotion();
 							//you gain xp from defeating a regular enemy
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
-							User.xpEnemy();
-							User.checkLevelUp();
+							user->xpEnemy();
+							user->checkLevelUp();
 							cout<<endl;
 						}
 						else
@@ -138,11 +138,11 @@ public:
 					{
 						//if the enemy is a boss it will always drop a potion (call potion increments potion from Michael)
 						cout<<"You earned a potion for defeating you opponent!"<<endl;
-						User.addPotion();
+						user->addPotion();
 						//you gain xp from beating a boss
 						cout<<"You earned 50 XP from defeating your opponent!"<<endl;
-						User.xpBoss();
-						User.checkLevelUp();
+						user->xpBoss();
+						user->checkLevelUp();
 						cout<<endl;
 					}
 				}
@@ -206,9 +206,9 @@ public:
 		}
 	}
 
-	void enemyDamage(int floorNum, char enemyType)
+	void enemyDamage(User* user, int floorNum, char enemyType)
 	{
-		tempUserHealth = User.getHealth();
+		tempUserHealth = user->getHealth();
 		if(enemyType = '!')
 		{
 			//calcualtes the damage of a regular enemy's attack based on floor number and base damage
@@ -219,11 +219,11 @@ public:
 			//calculates the damage of a boss enemy's attack based on floor number and base damage
 			damageDone = baseDamage + (rand () % (6 + floorNum)) + floorNum;
 		}
-		tempUSerHealth = (tempUserHealth - damageDone);
-		User.setHealth(tempUserHealth);
+		tempUserHealth = (tempUserHealth - damageDone);
+		user->setHealth(tempUserHealth);
 	}
 
-	void enemyAttack(int floorNum, char enemyType)
+	void enemyAttack(User* user, int floorNum, char enemyType)
 	{
 		//calculates whether or not the enemy's attack hits
 		attackChance = (rand () % 10) + 1;
@@ -236,32 +236,32 @@ public:
 		{
 			//if attack chance is 10 it does critical damage to the user(damage is run twice)
 			cout<<"Critical hit!"<<endl;
-			enemyDamage(floorNum, enemyType);
-			enemyDamage(floorNum, enemyType);
+			enemyDamage(user, floorNum, enemyType);
+			enemyDamage(user, floorNum, enemyType);
 		}
 		else
 		{
 			//does regular damage to the user
 			cout<<"Your enemy's attack hit!"<<endl;
-			enemyDamage(floorNum, enemyType);
+			enemyDamage(user, floorNum, enemyType);
 		}
 	}
 
 	
-	void UsePotion()
+	void UsePotion(User* user)
 	{
 		//User uses a potion and then enemy gets a chance to atttack
-		User.usePotion();
+		user->usePotion();
 	}
 	
 
 	void displayStats(User* user)
 	{
 		//Lets the user see their stats
-		Print.printPlayerStats(user);
+		printPlayerStats(user);
 	}
 
-	void run(int floorNum, char enemyType)
+	void run(User* user, int floorNum, char enemyType)
 	{
 		//calculates the user's cahcne of running away from the battle successfully
 		runChance = (rand () %  3) + 1;
@@ -274,7 +274,7 @@ public:
 		{
 			cout<<"You were unable to run away!"<<endl;
 			cout<<endl;
-			enemyAttack(floorNum, enemyType);
+			enemyAttack(user, floorNum, enemyType);
 		}
 		runChance = 0;
 	}
