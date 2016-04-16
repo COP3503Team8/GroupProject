@@ -163,8 +163,8 @@ int User::getPotions(){
 	 //Returns amount of potions
 	 return potion;
 }
-int getNeededEXP(){
+int User::getNeededEXP(){
 	//Returns needed XP
-	return neededXP;
+	return requiredXP;
 }
 #endif // !USER_H
