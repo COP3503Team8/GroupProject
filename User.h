@@ -32,7 +32,7 @@ public:
 	void xpBoss(); //Increases XP after killing a boss
 	void addPotion(); //Gives player a potion
 	void usePotion(); //Uses a potion to restore to full health
-	int getPotion(); //Returns amount of potions
+	int getPotions(); //Returns amount of potions
 };
 
 int User::getMaxHealth() {
@@ -151,8 +151,8 @@ void User::usePotion(){
 	potion--;
 	health = 100;
 }
-int User::getPotion(){
+int User::getPotions(){
 	 //Returns amount of potions
-	 return potions;
+	 return potion;
 }
 #endif // !USER_H
