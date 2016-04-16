@@ -176,7 +176,7 @@ public:
 	};
 
 	void killMonster(int* coord) {
-		for (int i = 0; i < monsterList.size(); i++) {
+		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			if ((monsterList.at(i)[0] == coord[0]) && (monsterList.at(i)[1] == coord[1])) {
 				monsterList.erase(monsterList.begin() + i);			}
 		}		
@@ -184,14 +184,14 @@ public:
 
 	void moveAllMonsters() {
 		std::cout << playerLoc[0] << " " << playerLoc[1] << std::endl;
-		for (int i = 0; i < monsterList.size(); i++) {
+		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			moveMonster(monsterList.at(i));
 		}
 	}
 
 	bool isMonster(int* coord) {
 		bool out = false;
-		for (int i = 0; i < monsterList.size(); i++) {
+		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			if ((monsterList.at(i)[0] == coord[0]) && (monsterList.at(i)[1] == coord[1])) {
 				out = true;
 			}
@@ -209,7 +209,7 @@ public:
 		for (int i = 1; i < 21; i++) {
 			for (int j = 1; j < 21; j++) {
 				bool isMonster = false;
-				for (int k = 0; k < monsterList.size(); k++) {
+				for (unsigned int k = 0; k < monsterList.size(); k++) {
 					if ((monsterList.at(k)[0] == j) && (monsterList.at(k)[1] == i)) {
 						isMonster = true;
 					}
@@ -340,7 +340,7 @@ public:
 
 			}
 			roomsLeft -= 1;
-			for (int i = 0; i < validRooms.size(); i++) {
+			for (unsigned int i = 0; i < validRooms.size(); i++) {
 							delete[] validRooms.at(i);
 						}
 			validRooms.clear();
