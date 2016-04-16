@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef BATTLECLASS_H
 #define BATTLECLASS_H
 #include <iostream>
@@ -279,3 +280,5 @@ public:
 };
 
 #endif
+
+>>>>>>> 85ca8495d236bac8b6fe38bda8c90f673ae4e803
