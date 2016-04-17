@@ -22,10 +22,10 @@ public:
 	void setPlayerY(int y) {
 		playerLoc[1] = y;
 	}
-	bool isBoss() {
+	bool virtual isBoss() {
 		return false;
 	}
-	bool atStairs() {
+	bool virtual atStairs() {
 		return false;
 	}
 	void moveMonster(int* location) /*-1 will mean unvisited, -2 will mean invalid space */ 
@@ -182,8 +182,7 @@ public:
 		}		
 	}
 
-	void moveAllMonsters() {
-		std::cout << playerLoc[0] << " " << playerLoc[1] << std::endl;
+	void virtual moveAllMonsters() {
 		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			moveMonster(monsterList.at(i));
 		}
@@ -220,7 +219,7 @@ public:
 				else if (isMonster) {
 					std::cout << "!";
 				}
-				else if (map[i][j] == 1) {
+				else if (map[j][i] == 1) {
 					std::cout << " ";
 				}
 				else {
@@ -240,20 +239,20 @@ public:
 	void spawnPlayerAtDoor(int door) // 1 for top, -1 for bottom, 2 for right, -2 for left
 	{
 		if (door == 1) {
-			playerLoc[0] = 10;
-			playerLoc[1] = 1;
+			playerLoc[0] = 11;
+			playerLoc[1] = 2;
 		}
 		else if (door == -1) {
-			playerLoc[0] = 10;
-			playerLoc[1] = 18;
+			playerLoc[0] = 11;
+			playerLoc[1] = 19;
 		}
 		else if (door == 2) {
-			playerLoc[0] = 18;
-			playerLoc[1] = 10;
+			playerLoc[0] = 19;
+			playerLoc[1] = 11;
 		}
 		else if (door == -2) {
-			playerLoc[0] = 1;
-			playerLoc[1] = 10;
+			playerLoc[0] = 2;
+			playerLoc[1] = 11;
 		}
 		else {
 			throw std::invalid_argument("can only spawn at doors");
@@ -263,16 +262,16 @@ public:
 
 	int atDoor() // 1 for top, -1 for bottom, 2 for right, -2 for left, 0 for false
 	{
-		if ((playerLoc[0] == 10) && (playerLoc[1] == 0)) {
+		if ((playerLoc[0] == 11) && (playerLoc[1] == 1)) {
 			return 1;
 		}
-		else if ((playerLoc[0] == 10) && (playerLoc[1] == 19)) {
+		else if ((playerLoc[0] == 11) && (playerLoc[1] == 20)) {
 			return -1;
 		}
-		else if ((playerLoc[0] == 19) && (playerLoc[1] == 10)) {
+		else if ((playerLoc[0] == 20) && (playerLoc[1] == 11)) {
 			return 2;
 		}
-		else if ((playerLoc[0] == 0) && (playerLoc[1] == 10)) {
+		else if ((playerLoc[0] == 1) && (playerLoc[1] == 11)) {
 			return -2;
 		}
 		else {
@@ -283,7 +282,6 @@ public:
 
 
 	Room() {
-		srand(time(0));
 		map = new int*[22];
 		for (int i = 0; i<22; i++) {
 			map[i] = new int[22];
@@ -366,7 +364,7 @@ public:
 			int tempInt = rand() % monsterLocations.size();
 			monsterList.push_back(monsterLocations.at(tempInt));
 			monsterLocations.erase(monsterLocations.begin() + tempInt);
-			for (int i = 0; i < monsterLocations.size(); i++) {
+			for (unsigned int i = 0; i < monsterLocations.size(); i++) {
 				delete[] monsterLocations.at(i);
 			}
 			monsterLocations.clear();
@@ -401,7 +399,7 @@ public:
 			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
 			{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
 			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
 			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
 			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
 			{0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
@@ -422,8 +420,8 @@ public:
 				killMonster(monsterList.at(0));
 			}
 			int* bossLoc = new int[2];
-			bossLoc[0] = 11;
-			bossLoc[1] = 13;
+			bossLoc[0] = 13;
+			bossLoc[1] = 11;
 			monsterList.push_back(bossLoc);
 
 	}
@@ -438,7 +436,7 @@ public:
 
 	}
 
-	void moveMonster() {
+	void moveAllMonsters() {
 		return;
 	}
 	bool isBoss() {

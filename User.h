@@ -1,5 +1,6 @@
 #ifndef USER_H
 #define USER_H
+#include <iostream>
 #include "Person.h"
 
 class Inventory;
@@ -111,6 +112,7 @@ void User::move(char dir, int **map) {
 		return;
 	}
 	else {
+		std::cout << "Not correct letter!" << std::endl;
 		return;
 	}
 }
@@ -165,6 +167,6 @@ int User::getPotions(){
 }
 int User::getNeededEXP(){
 	//Returns needed XP
-	return requiredXP;
+	return (requiredXP - xp);
 }
 #endif // !USER_H

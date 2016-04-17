@@ -6,21 +6,31 @@
 #include "Print.h"
 
 int main() {
+	srand(time(0));
 	User* player = new User();
     int floorNum = 1;
     char dir;
     
-    while (floorNum <= 6) {
+    while (floorNum <= 4) {
         Floor* currFloor = new Floor(floorNum);
         while (true) {
+			if (player->getHealth() < 1) {
+				std::cout << "YOU LOSE!!!" << std::endl;
+				return 0;
+			}
             currFloor->getCurrRoom()->printMap();
             std::cin>>dir;
             
             //input validation
             if(dir == 'q') {
-                menu(player, currFloor);
+                menu(player, floorNum);
                 continue;
             }
+            
+            if (dir == 'e') {
+				currFloor->printMap();
+				continue;
+			}
 
             player->move(dir, currFloor->getCurrRoom()->getMap());
             currFloor->getCurrRoom()->setPlayerX(player->getXLocation());
@@ -30,7 +40,9 @@ int main() {
             currFloor->getCurrRoom()->moveAllMonsters();
 
             if (currFloor->getCurrRoom()->playerAtMonster()) {
-                battle(player, floorNum, currFloor->getCurrRoom()->isBoss());
+				Battle newBattle;
+                newBattle.battleScreen(player, player->getLevel(), floorNum, currFloor->getCurrRoom()->isBoss());
+                currFloor->getCurrRoom()->killMonster(currFloor->getCurrRoom()->getPlayerLoc());
             }
 
             int door = currFloor->getCurrRoom()->atDoor();
@@ -46,10 +58,11 @@ int main() {
             }
             
 
-            
+           std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl; 
         }
     }
+    std::cout << "Congruatulations!!! You won!!!" << std::endl;
     
     return 0;
 }
-}
+

@@ -26,7 +26,6 @@ public:
 	Battle()
 	{
 		inBattle = true;
-		battleChoice;
 		attackChance = 0;
 		runChance = 0;
 		damageDone = 0;
@@ -132,6 +131,10 @@ public:
 						else
 						{
 							cout<<"Your opponent did not drop a potion"<<endl;
+							user->xpEnemy();
+							user->checkLevelUp();
+							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
+							cout<<endl;
 						}
 					}
 					else if(enemyType)

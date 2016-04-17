@@ -48,28 +48,33 @@ public:
 	void changeRoom(int dir) //// 1 for up, -1 for down, 2 for right, -2 for left
 	{
 		if (dir == 1) {
-			if (map[playerLoc[1]-1][playerLoc[0]] == 1) {
+			if (map[playerLoc[1]-1][playerLoc[0]] >= 1) {
 				playerLoc[1] -= 1;
+				return;
 			}
 		}
 		else if (dir == -1) {
-			if (map[playerLoc[1]+1][playerLoc[0]] == 1) {
+			if (map[playerLoc[1]+1][playerLoc[0]] >= 1) {
 				playerLoc[1] += 1;
+				return;
 			}
 		}
 		else if (dir == -2) {
-			if (map[playerLoc[1]][playerLoc[0]-1] == 1) {
+			if (map[playerLoc[1]][playerLoc[0]-1] >= 1) {
 				playerLoc[0] -= 1;
+				return;
 			}
 		}
 		else if (dir == 2) {
-			if (map[playerLoc[1]][playerLoc[0]+1] == 1) {
+			if (map[playerLoc[1]][playerLoc[0]+1] >= 1) {
 				playerLoc[0] += 1;
+				return;
 			}
 		}
 		else {
 			throw std::invalid_argument("changeRoom must take -2,-1,1,2");
 		}
+		
 	}
 
 	void printMap() {
@@ -109,6 +114,9 @@ public:
 			}
 		}
 		map[10][10] = 1;
+		Room* tempRoom= new Room();
+		roomList.push_back(new roomWithCoords(10, 10, tempRoom));
+		
 		int roomsLeft = floorNum * 10;
 		while (roomsLeft > 0) {
 			std::vector<int*> validRooms;
@@ -168,6 +176,7 @@ public:
 		}
 		playerLoc = new int[2];
 		playerLoc[0] = 10, playerLoc[1] = 10;
+		
 	}
 };
 
