@@ -61,7 +61,7 @@ int main() {
            std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl; 
         }
     }
-    std::cout << "Congruatulations!!! You won!!!" << std::endl;
+    std::cout << "Congratulations!!! You won!!!" << std::endl;
     
     return 0;
 }
