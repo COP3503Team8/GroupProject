@@ -45,35 +45,36 @@ public:
 		throw std::logic_error("no Current Room?");
 	}
 
-	void changeRoom(int dir) //// 1 for up, -1 for down, 2 for right, -2 for left
+	bool changeRoom(int dir) //// 1 for up, -1 for down, 2 for right, -2 for left
 	{
 		if (dir == 1) {
 			if (map[playerLoc[1]-1][playerLoc[0]] >= 1) {
 				playerLoc[1] -= 1;
-				return;
+				return true;
 			}
 		}
 		else if (dir == -1) {
 			if (map[playerLoc[1]+1][playerLoc[0]] >= 1) {
 				playerLoc[1] += 1;
-				return;
+				return true;
 			}
 		}
 		else if (dir == -2) {
 			if (map[playerLoc[1]][playerLoc[0]-1] >= 1) {
 				playerLoc[0] -= 1;
-				return;
+				return true;
 			}
 		}
 		else if (dir == 2) {
 			if (map[playerLoc[1]][playerLoc[0]+1] >= 1) {
 				playerLoc[0] += 1;
-				return;
+				return true;
 			}
 		}
 		else {
 			throw std::invalid_argument("changeRoom must take -2,-1,1,2");
 		}
+		return false;
 		
 	}
 
