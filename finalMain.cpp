@@ -24,6 +24,12 @@ int main() {
             //input validation
             if(dir == 'q') {
                 menu(player, floorNum);
+                while (true) {
+                    std::cin >> dir;
+                    if (dir == 'q') {
+                        break;
+                    }
+                }
                 continue;
             }
             
