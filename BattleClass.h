@@ -164,8 +164,8 @@ public:
 						{
 							cout<<"Your opponent did not drop any Smokin' Notes"<<endl;
 							user->xpEnemy();
-							user->checkLevelUp();
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
+							user->checkLevelUp();
 							cout<<endl;
 						}
 					}

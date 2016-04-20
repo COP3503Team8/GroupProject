@@ -143,6 +143,7 @@ void User::checkLevelUp() {
 			this->level += 1;
 			maxHealth += 10;
 			health = maxHealth;
+			std::cout << "Leveled up!" << std::endl;
 		}
 	}
 	return;
