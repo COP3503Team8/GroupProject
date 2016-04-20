@@ -212,7 +212,7 @@ public:
 				}
 				if ((playerLoc[0] == j) && (playerLoc[1] == i)) {
 					//Prints player location
-					std::cout << "X";
+					std::cout << "H";
 				}
 				else if (isMonster) {
 					//Prints enemy location
