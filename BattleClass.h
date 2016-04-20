@@ -22,6 +22,7 @@ public:
 	int enemyHealth;//the health of the enemy based on their floor and type
 	int tempUserHealth;//used to help manipulate the the user's health
 	int potionChance;//tells whether or not the user gets a potion from winning a battle
+	bool ranAway; //tells whether the play had run away
 
 	Battle()
 	{
@@ -114,7 +115,12 @@ public:
 			if(!inBattle)
 			{
 				clearScreen();
-				cout<<"Battle over!!"<<endl;
+				if(ranAway){
+					cout << "You ran away successfully!" << endl;
+				}
+				else{
+					cout<<"Battle over!!"<<endl;
+				}
 				if(user->getHealth() <= 0)
 					{
 						cout<<"You Lose!!"<<endl;
@@ -281,12 +287,11 @@ public:
 		if(runChance == 1)
 		{
 			inBattle = 0;
-			cout<<"You ran away succesfully!"<<endl;
+			ranAway = true;
 		}
 		else
 		{
 			cout<<"You were unable to run away!"<<endl;
-			cout<<endl;
 			enemyAttack(user, floorNum, enemyType);
 		}
 		runChance = 0;
