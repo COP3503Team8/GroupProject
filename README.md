@@ -11,6 +11,7 @@ There once was a student named Harrison who had trouble in COP3503. The only way
 <li>"a": left</li>
 <li>"s": down</li>
 <li>"d": right</li>
+<li>"f": wait</li>
 <li>"q": open and close pause menu</li>
 <li>"e": open and close minimap</li>
 <li>Enter in multiple values to run. Enemies will still move as fast as you.</li>
