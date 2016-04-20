@@ -40,9 +40,11 @@ public:
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
 		if(!enemyType){
+			//Print out message for ordinary enemy
 			cout<<"You have encountered an enemy!"<<endl << endl;
 		}
 		else{
+			//Print out bosses
 			if(floorNum == 1){
 				cout<<"You must beat Fatemeh!"<<endl<<endl;
 			}
@@ -56,6 +58,7 @@ public:
 				cout<<"You must defeat the almighty Liu!!!"<<endl<<endl;
 			}
 		}
+		//Initiate battle
 		createEnemy(floorNum, enemyType);
 		inBattle = true;
 		while(inBattle)
