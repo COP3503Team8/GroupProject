@@ -43,7 +43,7 @@ int main() {
 						break;
 					}
 					else if (dir == 'z'){
-						std::cout << "Are you sure? Y/N" << endl;
+						std::cout << "Are you sure? (Y/N)" << endl;
 						while(true){
 							std::cin >> dir;
 							if(dir == 'Y' || dir == 'y'){
