@@ -19,12 +19,11 @@ int main() {
 	srand(time(0));
 	//Begin game
 	while (floorNum <= 4) {
-		//Generate new floor. Game should only have 3 floors.
+		//Generate new floor. Game should only have 4 floors.
 		Floor* currFloor = new Floor(floorNum);
 		while (true) {
 			//Check if player is still alive
 			if (player->getHealth() < 1) {
-				std::cout << "YOU LOSE!!!" << std::endl;
 				return 0;
 			}
 			//Print map
@@ -100,6 +99,9 @@ int main() {
 			currFloor->getCurrRoom()->moveAllMonsters();
 			if (currFloor->getCurrRoom()->playerAtMonster()) {
 				//Initiate battle if player runs into monster
+				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				cin.clear();
+				cin.ignore(1024, '\n');
 				Battle newBattle;
 				newBattle.battleScreen(player, player->getLevel(), floorNum, currFloor->getCurrRoom()->isBoss());
 				currFloor->getCurrRoom()->killMonster(currFloor->getCurrRoom()->getPlayerLoc());
@@ -126,6 +128,7 @@ int main() {
 		}
 	}
 	//Print victory message
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 	std::cout << "Congratulations!!! You won!!!" << std::endl;
 
 	return 0;
