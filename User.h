@@ -112,7 +112,6 @@ void User::move(char dir, int **map) {
 		return;
 	}
 	else {
-		std::cout << "Not correct letter!" << std::endl;
 		return;
 	}
 }
