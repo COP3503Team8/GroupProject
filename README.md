@@ -33,7 +33,7 @@ There once was a student named Harrison who had trouble in COP3503. The only way
 <ul>
 <li>"#": wall</li>
 <li>"!": enemy</li>
-<li>"X": Harrison</li>
+<li>"H": Harrison</li>
 </ul>
 <h1>Reading the floor map</h1>
 <ul>
