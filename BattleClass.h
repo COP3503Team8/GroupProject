@@ -93,6 +93,7 @@ public:
 			{
 				//displays user stats and then gives the user a chacne to attack again
 				displayStats(user);
+				cout << endl;
 			}
 			else if(battleChoice.compare("4") == 0)
 			{
