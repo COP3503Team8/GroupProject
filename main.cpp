@@ -15,6 +15,11 @@ int main() {
 	bool godmode = false;
 	//Clear screen
 	clearScreen();
+	//Print intro
+	printStory();
+	std::cin>>dir;
+	cin.clear();
+	cin.ignore(1024, '\n');
 	//Seed time for random generation
 	srand(time(0));
 	//Begin game
