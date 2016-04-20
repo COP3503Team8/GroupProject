@@ -178,7 +178,7 @@ void User::addPotion(){
 		potion++;
 	}
 	else{
-		std::cout << "Your inventory is full!" << endl;
+		std::cout << "Your inventory is full!" << std::endl;
 	}
 	return;
 }
