@@ -140,6 +140,7 @@ public:
 			{
 				clearScreen();
 				if(ranAway){
+					ranAway = false;
 					cout << "You ran away successfully!" << endl;
 				}
 				else{
