@@ -174,7 +174,12 @@ void User::xpBoss(){
 }
 void User::addPotion(){
 	//Gives player a potion
-	potion++;
+	if(potion < 10){
+		potion++;
+	}
+	else{
+		std::cout << "Your inventory is full!" << endl;
+	}
 	return;
 }
 void User::usePotion(){
