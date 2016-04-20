@@ -13,9 +13,13 @@ There once was a student named Harrison who had trouble in COP3503. The only way
 <li>"d": right</li>
 <li>"q": open and close pause menu</li>
 <li>"e": open and close minimap</li>
+<li>Enter in multiple values to run. Enemies will still move as fast as you.</li>
+<h3>Cheats</h3>
 <li>"/": toggle cheats</li>
-<li>"p": toggle godmode (cheats must be enable)</li>
-<li>Enter in multiple values to run. Enemies will still move as fast as you.
+<li>"o": toggle godmode</li>
+<li>"p": get a packet of Smokin' Notes</li>
+<li>"k": remove all the enemies in the room</li>
+<li>"l": level up</li>
 </ul>
 <h2>Battle Mode</h2>
 <ul>

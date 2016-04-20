@@ -87,12 +87,19 @@ int main() {
 				(cheat) ? (std::cout << "Cheats enabled" << endl) : (std::cout << "Cheats disabled" << endl);
 				continue;
 			}
-			else if(dir == 'p' && cheat){
+			else if(dir == 'o' && cheat){
 				//Toggles godmode
 				player->setHealth(player->getMaxHealth());
 				godmode = toggle(godmode);
 				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 				(godmode) ? (std::cout << "Godmode enabled" << endl) : (std::cout << "Godmode disabled" << endl);
+				continue;
+			}
+			else if(dir == 'p' && cheat){
+				//Gives potion
+				player->addPotion();
+				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				cout << "You found a packet of Smokin' Notes on the ground!" << endl;
 				continue;
 			}
 			else if(dir == 'k' && cheat){
@@ -109,7 +116,7 @@ int main() {
 				cout << "Leveled up!" << endl;
 				continue;
 			}
-			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f' && !cheat){
+			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f'){
 				//Tell user invalid input was received
 				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 				std::cout << "Invalid input!" << endl;
@@ -136,6 +143,8 @@ int main() {
 				Battle newBattle;
 				newBattle.battleScreen(player, player->getLevel(), floorNum, currFloor->getCurrRoom()->isBoss(), cheat, godmode);
 				currFloor->getCurrRoom()->killMonster(currFloor->getCurrRoom()->getPlayerLoc());
+				cin.clear();
+				cin.ignore(1024, '\n');
 				continue;
 			}
 			//Check if player is at door
