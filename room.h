@@ -193,6 +193,12 @@ public:
 		return isMonster(playerLoc);
 	}
 
+	void killAllMonsters(){
+		//Kill all monsters in the room. Intended for cheats.
+		while (monsterList.size() > 0) {
+			killMonster(monsterList.at(0));
+		}
+	}
 
 	void printMap() {
 		//Prints room GUI

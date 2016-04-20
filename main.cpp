@@ -95,6 +95,20 @@ int main() {
 				(godmode) ? (std::cout << "Godmode enabled" << endl) : (std::cout << "Godmode disabled" << endl);
 				continue;
 			}
+			else if(dir == 'k' && cheat){
+				//Kills all monsters in the room. Does not give player potions or experience.
+				currFloor->getCurrRoom()->killAllMonsters();
+				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				std::cout << "A virus spread on all the enemies computers!" << endl;
+				continue;
+			}
+			else if(dir == 'l' && cheat){
+				//Levels up player
+				player->levelUp();
+				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				cout << "Leveled up!" << endl;
+				continue;
+			}
 			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f' && !cheat){
 				//Tell user invalid input was received
 				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;

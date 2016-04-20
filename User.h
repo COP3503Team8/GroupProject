@@ -27,6 +27,7 @@ public:
 	int getXLocation(); //Returns x location
 	int getYLocation(); //Return y location
 	void move(char dir, int **map); //Moves the player. Checks for wall collision
+	void levelUp();
 	void checkLevelUp(); //Check to see if player levels up, and levels up the player if so
 	bool getInBattle(); //Returns a bool whether the player is in battle
 	void toggleInBattle(); //Changes the bool saying whether the user is in battle
@@ -115,6 +116,14 @@ void User::move(char dir, int **map) {
 	else {
 		return;
 	}
+}
+void User::levelUp(){
+	xp = 0;
+	requiredXP += 10;
+	this->level += 1;
+	maxHealth += 10;
+	health = maxHealth;
+	return;
 }
 void User::checkLevelUp() {
 	//Levels up the player if they have enough XP
