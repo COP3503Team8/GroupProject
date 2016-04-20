@@ -36,6 +36,7 @@ public:
 	void usePotion(); //Uses a potion to restore to full health
 	int getPotions(); //Returns amount of potions
 	int getNeededEXP(); //Returns needed XP
+	bool hasPotion(); //Returns whether player has potion
 };
 
 int User::getMaxHealth() {
@@ -167,5 +168,9 @@ int User::getPotions(){
 int User::getNeededEXP(){
 	//Returns needed XP
 	return (requiredXP - xp);
+}
+bool User::hasPotion(){
+	//Returns whether player has potion
+	return ((potion > 0) ? true : false);
 }
 #endif // !USER_H

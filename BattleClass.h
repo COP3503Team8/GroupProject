@@ -81,7 +81,12 @@ public:
 			else if(battleChoice.compare("2") == 0)
 			{
 				//The user uses a potion which brings them to full health and then gives the enemy a chance to attack
-				UsePotion(user);
+				if (!user->hasPotion()){
+					cout << "You don't have any Smokin' Notes!" << endl;
+				}
+				else{
+					UsePotion(user);
+				}
 				enemyAttack(user, floorNum, enemyType);
 				if(user->getHealth() <= 0)
 				{
@@ -91,7 +96,7 @@ public:
 			}
 			else if(battleChoice.compare("3") == 0)
 			{
-				//displays user stats and then gives the user a chacne to attack again
+				//displays user stats and then gives the user a chance to attack again
 				displayStats(user);
 				cout << endl;
 			}
