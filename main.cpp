@@ -123,8 +123,8 @@ int main() {
 			}
 			else if(dir == 'l' && cheat){
 				//Levels up player
-				player->levelUp();
 				clearScreen();
+				player->levelUp();
 				continue;
 			}
 			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f'){
