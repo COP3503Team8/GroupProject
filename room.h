@@ -42,10 +42,10 @@ public:
 			for (int j = 0; j < 22; j++)
 			{
 				if (currRoom[i][j] == 1) {
-					roomCopy[i][j] = -1;
+					roomCopy[j][i] = -1;
 				}
 				else {
-					roomCopy[i][j] = -2;
+					roomCopy[j][i] = -2;
 				}
 			}
 		}
