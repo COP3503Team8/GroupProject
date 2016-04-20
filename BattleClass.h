@@ -106,7 +106,7 @@ public:
 			}
 			if(!inBattle)
 			{
-				cout<<endl;
+				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 				cout<<"Battle over!!"<<endl;
 				if(user->getHealth() <= 0)
 					{
