@@ -109,10 +109,15 @@ int main() {
 				continue;
 			}
 			else if(dir == 'k' && cheat){
-				//Kills all monsters in the room. Does not give player potions or experience.
-				currFloor->getCurrRoom()->killAllMonsters();
-				clearScreen();
-				std::cout << "A virus spread on all the enemies computers!" << endl;
+				//Kills all monsters in the room. Does not give player potions or experience, and cannot kill bosses.
+				if(currFloor->getCurrRoom()->isBoss()){
+					cout << "Cannot infect the boss! The boss's internet is protected with SafeConnect!"
+				}
+				else{
+					currFloor->getCurrRoom()->killAllMonsters();
+					clearScreen();
+					std::cout << "A virus spread on all the enemies computers!" << endl;
+				}
 				continue;
 			}
 			else if(dir == 'l' && cheat){
