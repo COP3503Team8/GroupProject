@@ -51,7 +51,7 @@ public:
 			cout<<"4. Run"<<endl;
 			cout<<"Choice: ";
 			cin>>battleChoice;
-			cout<<endl;
+			cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
 			if(battleChoice.compare("1") != 0 && battleChoice.compare("2") != 0 && battleChoice.compare("3") != 0 && battleChoice.compare("4") != 0)
 			{
 				//checks if the given input is a valid battle choice
