@@ -33,7 +33,7 @@ int main() {
                 continue;
             }
             
-            if (dir == 'e') {
+            else if (dir == 'e') {
 				currFloor->printMap();
                 while (true) {
                     std::cin >> dir;
@@ -43,6 +43,10 @@ int main() {
                 }
 		continue;
 			}
+            else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f'){
+            	std::cout << "Invalid input!" << endl;
+            	continue;
+            }
 
             player->move(dir, currFloor->getCurrRoom()->getMap());
             currFloor->getCurrRoom()->setPlayerX(player->getXLocation());
