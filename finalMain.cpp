@@ -42,6 +42,21 @@ int main() {
 						std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 						break;
 					}
+					else if (dir == 'z'){
+						std::cout << "Are you sure? Y/N" << endl;
+						while(true){
+							std::cin >> dir;
+							if(dir == 'Y' || dir == 'y'){
+								return 0;
+							}
+							else if(dir == 'N' || dir == 'n'){
+								std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+								break;
+							}
+							cin.clear();
+							cin.ignore(1024, '\n');
+						}
+					}
 					cin.clear();
 					cin.ignore(1024, '\n');
 				}
