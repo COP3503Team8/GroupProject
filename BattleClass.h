@@ -106,10 +106,10 @@ public:
 			{
 				//The user uses a potion which brings them to full health and then gives the enemy a chance to attack
 				if (!user->hasPotion()){
-					cout << "You don't have any Smokin' Notes!" << endl;
+					cout << "You don't have any Smokin' Notes!" << endl << endl;
 				}
 				else if(user->getHealth() == user->getMaxHealth()){
-					cout << "You already have full health!" << endl;
+					cout << "You already have full health!" << endl << endl;
 				}
 				else{
 					UsePotion(user);
