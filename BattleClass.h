@@ -40,9 +40,6 @@ public:
 
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
-		if(floorNum == 4 && enemyType){
-			printLiu();
-		}
 		if(!enemyType){
 			//Print out message for ordinary enemy
 			cout<<"You have encountered an enemy!"<<endl << endl;
@@ -67,6 +64,10 @@ public:
 		inBattle = true;
 		while(inBattle)
 		{
+			if(floorNum == 4 && enemyType){
+				//Keep Liu on screen for final boss battle
+				printLiu();
+			}
 			//The menu shown to the user while they are in battle
 			cout<<"You are in battle"<<endl;
 			cout<<"1. Attack"<<endl;
