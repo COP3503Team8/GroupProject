@@ -15,7 +15,7 @@ void printInventory(User* user){
       return;
     }
     else{
-      cout << "Smokin' Notes COP3503 X " << i << ": Heals to full health" << endl;
+      cout << "Smokin' Notes COP3503 X " << potions << ": Heals to full health" << endl;
     }
 }
 
