@@ -55,6 +55,7 @@ public:
 				cout<<"You must beat Todd Best!" <<endl<<endl;
 			}
 			else if(floorNum == 4){
+				printLiu();
 				cout<<"You must defeat the almighty Liu!!!"<<endl<<endl;
 			}
 		}
@@ -142,6 +143,7 @@ public:
 				}
 				if(user->getHealth() <= 0)
 					{
+						clearScreen();
 						cout<<"You Lose!!"<<endl;
 					}
 				else if(enemyHealth <= 0)
@@ -301,9 +303,17 @@ public:
 
 	void run(User* user, int floorNum, bool enemyType)
 	{
-		//calculates the user's cahcne of running away from the battle successfully
+		//calculates the user's chance of running away from the battle successfully
 		runChance = (rand () %  3) + 1;
-		if(runChance == 1)
+		if(enemyType){
+			if(floorNum < 4){
+				cout<<"You cannot run from bosses!"<<endl;
+			}
+			else{
+				cout<<"You cannot escape the great Liu!"<<endl;
+			}
+		}
+		else if(runChance == 1)
 		{
 			inBattle = 0;
 			ranAway = true;
