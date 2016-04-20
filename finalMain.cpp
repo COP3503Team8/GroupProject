@@ -120,7 +120,7 @@ int main() {
 				cin.clear();
 				cin.ignore(1024, '\n');
 				Battle newBattle;
-				newBattle.battleScreen(player, player->getLevel(), floorNum, currFloor->getCurrRoom()->isBoss());
+				newBattle.battleScreen(player, player->getLevel(), floorNum, currFloor->getCurrRoom()->isBoss(), cheat, godmode);
 				currFloor->getCurrRoom()->killMonster(currFloor->getCurrRoom()->getPlayerLoc());
 				continue;
 			}

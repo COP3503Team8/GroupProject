@@ -36,7 +36,7 @@ public:
 
 	}
 
-		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType)
+		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
 		cout<<"You have encountered an enemy!"<<endl;
 		createEnemy(floorNum, enemyType);
@@ -152,6 +152,9 @@ public:
 				return;
 			}
 			battleChoice = "0";
+			if(cheat && godmode){
+				user->setHealth(user->getMaxHealth());
+			}
 		}
 	}
 
@@ -250,13 +253,13 @@ public:
 		}
 	}
 
-	
+
 	void UsePotion(User* user)
 	{
 		//User uses a potion and then enemy gets a chance to atttack
 		user->usePotion();
 	}
-	
+
 
 	void displayStats(User* user)
 	{
