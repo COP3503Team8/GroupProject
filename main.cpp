@@ -125,7 +125,6 @@ int main() {
 				//Levels up player
 				player->levelUp();
 				clearScreen();
-				cout << "Leveled up!" << endl;
 				continue;
 			}
 			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f'){

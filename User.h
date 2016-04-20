@@ -118,21 +118,32 @@ void User::move(char dir, int **map) {
 	}
 }
 void User::levelUp(){
-	xp = 0;
-	requiredXP += 10;
-	this->level += 1;
-	maxHealth += 10;
-	health = maxHealth;
-	return;
-}
-void User::checkLevelUp() {
-	//Levels up the player if they have enough XP
-	if(xp >= requiredXP){
-		xp -= requiredXP;
+	if(this->level >= 99){
+		std::cout << "Already max level!" << std::endl;
+	}
+	else{
+		xp = 0;
 		requiredXP += 10;
 		this->level += 1;
 		maxHealth += 10;
 		health = maxHealth;
+		std::cout << "Leveled up!" << std::endl;
+	}
+	return;
+}
+void User::checkLevelUp() {
+	//Levels up the player if they have enough XP
+	if(this->level >= 99){
+		std::cout << "Already max level!" << std::endl;
+	}
+	else{
+		if(xp >= requiredXP){
+			xp -= requiredXP;
+			requiredXP += 10;
+			this->level += 1;
+			maxHealth += 10;
+			health = maxHealth;
+		}
 	}
 	return;
 }
