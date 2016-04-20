@@ -17,6 +17,7 @@ void menu(User* user, int currentFloor){
     cout << "Current Floor: " << currentFloor << endl;
     printPlayerStats(user);
     printInventory(user);
+    cout << "Enter 'q' to close" << endl;
     cout << "Enter 'z' to quit" << endl;
     }
 

@@ -67,6 +67,7 @@ int main() {
 				//Open minimap and wait for user to hit 'e' again to close
 				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
 				currFloor->printMap();
+				std::cout << "Enter 'e' to close" << endl;
 				while (true) {
 					std::cin >> dir;
 					if (dir == 'e') {
