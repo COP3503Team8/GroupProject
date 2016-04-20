@@ -38,7 +38,7 @@ public:
 
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
-		cout<<"You have encountered an enemy!"<<endl;
+		cout<<"You have encountered an enemy!"<<endl << endl;
 		createEnemy(floorNum, enemyType);
 		inBattle = true;
 		while(inBattle)
@@ -86,7 +86,7 @@ public:
 				}
 				else{
 					UsePotion(user);
-					cout << "Your Smokin' Notes has restored your strength!" << endl;
+					cout << "Your Smokin' Notes have restored your strength!" << endl;
 				}
 				enemyAttack(user, floorNum, enemyType);
 				if(user->getHealth() <= 0)
@@ -113,7 +113,7 @@ public:
 			}
 			if(!inBattle)
 			{
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				cout<<"Battle over!!"<<endl;
 				if(user->getHealth() <= 0)
 					{

@@ -23,5 +23,9 @@ void menu(User* user, int currentFloor){
     cout << "Enter 'z' to quit" << endl;
     }
 
+void clearScreen(){
+  //Clears screen with new lines
+  cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+}
 
 #endif

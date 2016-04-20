@@ -14,7 +14,7 @@ int main() {
 	bool cheat = false;
 	bool godmode = false;
 	//Clear screen
-	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	clearScreen();
 	//Seed time for random generation
 	srand(time(0));
 	//Begin game
@@ -33,13 +33,13 @@ int main() {
 			//Read input for menu, minimap, and cheat input
 			if(dir == 'q') {
 				//Print menu and wait for user to hit 'q' again to close
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				menu(player, floorNum);
 				while (true) {
 					std::cin >> dir;
 					if (dir == 'q') {
 						//Close menu
-						std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+						clearScreen();
 						break;
 					}
 					else if (dir == 'z'){
@@ -50,7 +50,7 @@ int main() {
 								return 0;
 							}
 							else if(dir == 'N' || dir == 'n'){
-								std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+								clearScreen();
 								menu(player, floorNum);
 								break;
 							}
@@ -65,14 +65,14 @@ int main() {
 			}
 			else if (dir == 'e') {
 				//Open minimap and wait for user to hit 'e' again to close
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				currFloor->printMap();
 				std::cout << "Enter 'e' to close" << endl;
 				while (true) {
 					std::cin >> dir;
 					if (dir == 'e') {
 						//Close minimap
-						std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+						clearScreen();
 						break;
 					}
 					cin.clear();
@@ -83,7 +83,7 @@ int main() {
 			else if (dir == '/'){
 				//Toggle cheats
 				cheat = toggle(cheat);
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				(cheat) ? (std::cout << "Cheats enabled" << endl) : (std::cout << "Cheats disabled" << endl);
 				continue;
 			}
@@ -91,34 +91,34 @@ int main() {
 				//Toggles godmode
 				player->setHealth(player->getMaxHealth());
 				godmode = toggle(godmode);
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				(godmode) ? (std::cout << "Godmode enabled" << endl) : (std::cout << "Godmode disabled" << endl);
 				continue;
 			}
 			else if(dir == 'p' && cheat){
 				//Gives potion
 				player->addPotion();
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				cout << "You found a packet of Smokin' Notes on the ground!" << endl;
 				continue;
 			}
 			else if(dir == 'k' && cheat){
 				//Kills all monsters in the room. Does not give player potions or experience.
 				currFloor->getCurrRoom()->killAllMonsters();
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				std::cout << "A virus spread on all the enemies computers!" << endl;
 				continue;
 			}
 			else if(dir == 'l' && cheat){
 				//Levels up player
 				player->levelUp();
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				cout << "Leveled up!" << endl;
 				continue;
 			}
 			else if (dir != 'w' && dir != 'a' && dir != 's' && dir != 'd' && dir != 'f'){
 				//Tell user invalid input was received
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				std::cout << "Invalid input!" << endl;
 				cin.clear();
 				cin.ignore(1024, '\n');
@@ -137,7 +137,7 @@ int main() {
 			currFloor->getCurrRoom()->moveAllMonsters();
 			if (currFloor->getCurrRoom()->playerAtMonster()) {
 				//Initiate battle if player runs into monster
-				std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+				clearScreen();
 				cin.clear();
 				cin.ignore(1024, '\n');
 				Battle newBattle;
@@ -164,11 +164,11 @@ int main() {
 				break;
 			}
 			//Clear screen
-			std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+			clearScreen();
 		}
 	}
 	//Print victory message
-	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+	clearScreen();
 	std::cout << "Congratulations!!! You won!!!" << std::endl;
 
 	return 0;
