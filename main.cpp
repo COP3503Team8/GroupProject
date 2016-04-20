@@ -111,7 +111,7 @@ int main() {
 			else if(dir == 'k' && cheat){
 				//Kills all monsters in the room. Does not give player potions or experience, and cannot kill bosses.
 				if(currFloor->getCurrRoom()->isBoss()){
-					cout << "Cannot infect the boss! The boss's internet is protected with SafeConnect!"
+					cout << "Cannot infect the boss! The boss's internet is protected with SafeConnect!" << endl;
 				}
 				else{
 					currFloor->getCurrRoom()->killAllMonsters();
