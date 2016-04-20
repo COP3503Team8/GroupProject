@@ -28,9 +28,15 @@ There once was a student named Harrison who had trouble in COP3503. The only way
 <li>"3": view player stats</li>
 <li>"4": attempt to run</li>
 </ul>
-<h1>Reading the map</h1>
+<h1>Reading the room map</h1>
 <ul>
 <li>"#": wall</li>
 <li>"!": enemy</li>
 <li>"X": Harrison</li>
+</ul>
+<h1>Reading the floor map</h1>
+<ul>
+<li>"#": room</li>
+<li>"X": Harrison's current room</li>
+<li>"E": boss room</li>
 </ul>
