@@ -7,7 +7,7 @@
 using namespace std;
 
 void printPlayerStats(User* user){
-    cout << "Player 1's Stats";
+    cout << "Player 1's Stats" << endl;
     cout << "Health: " << user->getHealth() << "/" << user->getMaxHealth() << endl;
     cout << "Level: " << user->getLevel() << endl;
     cout << "Needed EXP to Level Up: " << user->getNeededEXP() << endl;
