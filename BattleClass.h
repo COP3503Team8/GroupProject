@@ -46,7 +46,7 @@ public:
 			//The menu shown to the user while they are in battle
 			cout<<"You are in battle"<<endl;
 			cout<<"1. Attack"<<endl;
-			cout<<"2. Use Potion"<<endl;
+			cout<<"2. Use Smokin' Notes"<<endl;
 			cout<<"3. Display Stats"<<endl;
 			cout<<"4. Run"<<endl;
 			cout<<"Choice: ";
