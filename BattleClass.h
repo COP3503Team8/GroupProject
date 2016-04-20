@@ -39,7 +39,23 @@ public:
 
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
-		cout<<"You have encountered an enemy!"<<endl << endl;
+		if(!enemyType){
+			cout<<"You have encountered an enemy!"<<endl << endl;
+		}
+		else{
+			if(floorNum == 1){
+				cout<<"You must beat Fatemeh!"<<endl<<endl;
+			}
+			else if(floorNum == 2){
+				cout<<"You must beat Julian!"<<endl<<endl;
+			}
+			else if(floorNum == 3){
+				cout<<"You must beat Todd Best!" <<endl<<endl;
+			}
+			else if(floorNum == 4){
+				cout<<"You must defeat the almighty Liu!!!"<<endl<<endl;
+			}
+		}
 		createEnemy(floorNum, enemyType);
 		inBattle = true;
 		while(inBattle)
