@@ -5,6 +5,7 @@
 #include <ctime>
 #include "User.h"
 #include "Print.h"
+#include "Inventory.h"
 
 using namespace std;
 
@@ -120,6 +121,7 @@ public:
 			{
 				//displays user stats and then gives the user a chance to attack again
 				displayStats(user);
+				printInventory(user);
 				cout << endl;
 			}
 			else if(battleChoice.compare("4") == 0)
@@ -307,10 +309,10 @@ public:
 		runChance = (rand () %  3) + 1;
 		if(enemyType){
 			if(floorNum < 4){
-				cout<<"You cannot run from bosses!"<<endl;
+				cout<<"You cannot run from bosses!"<<endl<<endl;
 			}
 			else{
-				cout<<"You cannot escape the great Liu!"<<endl;
+				cout<<"You cannot escape the great Liu!"<<endl<<endl;
 			}
 		}
 		else if(runChance == 1)
