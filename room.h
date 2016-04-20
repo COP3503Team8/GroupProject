@@ -17,18 +17,23 @@ protected:
 
 public:
 	void setPlayerX(int x) {
+		//Sets X location of player
 		playerLoc[0] = x;
 	}
 	void setPlayerY(int y) {
+		//Sets Y location of player
 		playerLoc[1] = y;
 	}
 	bool virtual isBoss() {
+		//Virtual function to be overriden
 		return false;
 	}
 	bool virtual atStairs() {
+		//Virtual fuction to be overriden
 		return false;
 	}
-	void moveMonster(int* location) /*-1 will mean unvisited, -2 will mean invalid space */ 
+	void moveMonster(int* location) //-1 will mean unvisited, -2 will mean invalid space
+	//Makes a monster move toward the player. Uses Dijkstra's Algorithm.
 	//returns 'l' for left, 'r' for right, 'd' for down, 'u' for up, and 's' for no movement
 	{
 		int** currRoom = map;
@@ -119,7 +124,6 @@ public:
 		int myDistance = roomCopy[location[1]][location[0]];
 		int* tempIntArr;
 		if ((location[0] != 0) && (roomCopy[location[1]][location[0]-1] < myDistance) && (roomCopy[location[1]][location[0]-1] >= 0)) {
-			//return 'l';
 			tempIntArr = new int[2];
 			tempIntArr[0] = location[0] - 1;
 			tempIntArr[1] = location[1];
@@ -129,7 +133,6 @@ public:
 			delete[] tempIntArr;
 		}
 		else if ((location[1] != 0) && (roomCopy[location[1]-1][location[0]] < myDistance) && (roomCopy[location[1]-1][location[0]] >= 0)) {
-			//return 'u';
 			tempIntArr = new int[2];
 			tempIntArr[0] = location[0];
 			tempIntArr[1] = location[1] - 1;
@@ -140,7 +143,6 @@ public:
 
 		}
 		else if ((location[0] != 21 ) && (roomCopy[location[1]][location[0]+1] < myDistance) && (roomCopy[location[1]][location[0]+1] >= 0 )) {
-			//return 'r';
 			tempIntArr = new int[2];
 			tempIntArr[0] = location[0] + 1;
 			tempIntArr[1] = location[1];
@@ -150,7 +152,6 @@ public:
 			delete[] tempIntArr;
 		}
 		else if ((location[0] != 21) && (roomCopy[location[1]+1][location[0]] < myDistance) && (roomCopy[location[1]+1][location[0]] >= 0)) {
-			//return 'd';
 						tempIntArr = new int[2];
 			tempIntArr[0] = location[0];
 			tempIntArr[1] = location[1] + 1;
@@ -159,36 +160,25 @@ public:
 			}
 			delete[] tempIntArr;
 		}
-		else {
-					//return 's';
-		}
-
-		// 		for (int i = 0; i< 22; i++) {
-		// 	for (int j = 0; j < 22; j++) {
-		// 		std::cout << roomCopy[i][j] << " ";
-		// 	}
-		// 	std::cout << std::endl;
-		// }
-		// std::cout << std::endl;
-
-
-
 	};
 
 	void killMonster(int* coord) {
+		//Kills monster after battle
 		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			if ((monsterList.at(i)[0] == coord[0]) && (monsterList.at(i)[1] == coord[1])) {
 				monsterList.erase(monsterList.begin() + i);			}
-		}		
+		}
 	}
 
 	void virtual moveAllMonsters() {
+		//Moves all the monsters in the room
 		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			moveMonster(monsterList.at(i));
 		}
 	}
 
 	bool isMonster(int* coord) {
+		//Returns whether passed coordinates has a monster
 		bool out = false;
 		for (unsigned int i = 0; i < monsterList.size(); i++) {
 			if ((monsterList.at(i)[0] == coord[0]) && (monsterList.at(i)[1] == coord[1])) {
@@ -199,12 +189,13 @@ public:
 	}
 
 	bool playerAtMonster() {
+		//Returns whether the player is at a monster and should go into battle
 		return isMonster(playerLoc);
 	}
 
 
 	void printMap() {
-
+		//Prints room GUI
 		for (int i = 1; i < 21; i++) {
 			for (int j = 1; j < 21; j++) {
 				bool isMonster = false;
@@ -214,15 +205,19 @@ public:
 					}
 				}
 				if ((playerLoc[0] == j) && (playerLoc[1] == i)) {
+					//Prints player location
 					std::cout << "X";
 				}
 				else if (isMonster) {
+					//Prints enemy location
 					std::cout << "!";
 				}
 				else if (map[j][i] == 1) {
+					//Prints empty space
 					std::cout << " ";
 				}
 				else {
+					//Prints wall
 					std::cout<< "#";
 				}
 			}
@@ -231,13 +226,16 @@ public:
 	}
 
 	int* getPlayerLoc() {
+		//Returns player location in the form of an array pointer
 		return playerLoc;
 	}
 	int** getMap() {
+		//Returns room map as a 2D array
 		return map;
 	}
 	void spawnPlayerAtDoor(int door) // 1 for top, -1 for bottom, 2 for right, -2 for left
 	{
+		//Spawns player at the opposite door when moving from room to room
 		if (door == 1) {
 			playerLoc[0] = 11;
 			playerLoc[1] = 2;
@@ -262,6 +260,7 @@ public:
 
 	int atDoor() // 1 for top, -1 for bottom, 2 for right, -2 for left, 0 for false
 	{
+		//Detects whether player is at door
 		if ((playerLoc[0] == 11) && (playerLoc[1] == 1)) {
 			return 1;
 		}
@@ -282,6 +281,7 @@ public:
 
 
 	Room() {
+		//Constructor
 		map = new int*[22];
 		for (int i = 0; i<22; i++) {
 			map[i] = new int[22];
@@ -384,6 +384,7 @@ class BossRoom : public Room
 {
 public:
 	BossRoom() {
+		//Generates hardcoded bossroom with stairs
 		Room();
 		int bossmap [22][22]= {
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -417,8 +418,10 @@ public:
 			}
 
 			while (monsterList.size() > 0) {
+				//Kills generated monsters
 				killMonster(monsterList.at(0));
 			}
+			//Set boss location and add it to the monster list
 			int* bossLoc = new int[2];
 			bossLoc[0] = 13;
 			bossLoc[1] = 11;
@@ -427,6 +430,7 @@ public:
 	}
 
 	bool atStairs() {
+		//Detects whether player is at the stairs
 		if ((playerLoc[0] == 11) && (playerLoc[1] == 11)) {
 			return true;
 		}
@@ -437,14 +441,16 @@ public:
 	}
 
 	void moveAllMonsters() {
+		//Overloads virtual function
 		return;
 	}
 	bool isBoss() {
+		//Returns that room is a boss room
 		return true;
 	}
 
 	~BossRoom();
-	
+
 };
 
 

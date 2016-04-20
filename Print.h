@@ -7,6 +7,7 @@
 using namespace std;
 
 void printPlayerStats(User* user){
+    //Print player's stats
     cout << "Harrison's Stats" << endl;
     cout << "Health: " << user->getHealth() << "/" << user->getMaxHealth() << endl;
     cout << "Level: " << user->getLevel() << endl;
@@ -14,6 +15,7 @@ void printPlayerStats(User* user){
 }
 
 void menu(User* user, int currentFloor){
+    //Prints pause menu
     cout << "Current Floor: " << currentFloor << endl;
     printPlayerStats(user);
     printInventory(user);

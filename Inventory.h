@@ -7,11 +7,15 @@
 using namespace std;
 
 void printInventory(User* user){
+    //Prints inventory contents
     int potions = 0;
     potions = user->getPotions();
     cout << "Inventory:" << endl;
-    for(int i = 1; i <= potions; i++){
-        cout << "Smokin' Notes COP3503 " << i << ": Heals to full health" << endl;
+    if (potions < 1){
+      return;
+    }
+    else{
+      cout << "Smokin' Notes COP3503 X " << i << ": Heals to full health" << endl;
     }
 }
 
