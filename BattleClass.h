@@ -40,7 +40,7 @@ public:
 
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
-		if(floorNum == 4){
+		if(floorNum == 4 && enemyType){
 			printLiu();
 		}
 		if(!enemyType){
