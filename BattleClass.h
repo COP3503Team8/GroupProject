@@ -126,7 +126,7 @@ public:
 						potionChance = (rand () % 10) + 1;
 						if(potionChance == 1)
 						{
-							cout<<"You earned a potion for defeating your opponent!"<<endl;
+							cout<<"You earned a packet of Smokin' Notes for defeating your opponent!"<<endl;
 							user->addPotion();
 							//you gain xp from defeating a regular enemy
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
@@ -136,7 +136,7 @@ public:
 						}
 						else
 						{
-							cout<<"Your opponent did not drop a potion"<<endl;
+							cout<<"Your opponent did not drop any Smokin' Notes"<<endl;
 							user->xpEnemy();
 							user->checkLevelUp();
 							cout<<"You gained 10 XP from defeating your enemy!"<<endl;
@@ -146,7 +146,7 @@ public:
 					else if(enemyType)
 					{
 						//if the enemy is a boss it will always drop a potion (call potion increments potion from Michael)
-						cout<<"You earned a potion for defeating you opponent!"<<endl;
+						cout<<"You earned a packet of Smokin' Notes for defeating your opponent!"<<endl;
 						user->addPotion();
 						//you gain xp from beating a boss
 						cout<<"You earned 50 XP from defeating your opponent!"<<endl;
