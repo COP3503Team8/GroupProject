@@ -40,6 +40,9 @@ public:
 
 		void battleScreen(User* user, int userLevel, int floorNum, bool enemyType, bool cheat, bool godmode)
 	{
+		if(floorNum == 4){
+			printLiu();
+		}
 		if(!enemyType){
 			//Print out message for ordinary enemy
 			cout<<"You have encountered an enemy!"<<endl << endl;
@@ -56,7 +59,6 @@ public:
 				cout<<"You must beat Todd Best!" <<endl<<endl;
 			}
 			else if(floorNum == 4){
-				printLiu();
 				cout<<"You must defeat the almighty Liu!!!"<<endl<<endl;
 			}
 		}
