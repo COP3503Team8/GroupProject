@@ -51,6 +51,7 @@ int main() {
 							}
 							else if(dir == 'N' || dir == 'n'){
 								std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+								menu(player, floorNum);
 								break;
 							}
 							cin.clear();
