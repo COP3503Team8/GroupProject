@@ -108,15 +108,18 @@ public:
 				if (!user->hasPotion()){
 					cout << "You don't have any Smokin' Notes!" << endl;
 				}
+				else if(user->getHealth() == user->getMaxHealth()){
+					cout << "You already have full health!" << endl;
+				}
 				else{
 					UsePotion(user);
 					cout << "Your Smokin' Notes have restored your strength!" << endl;
-				}
-				enemyAttack(user, floorNum, enemyType);
-				if(user->getHealth() <= 0)
-				{
-					//if the enemy's attack kills the user the battle is over
-					inBattle = false;
+					enemyAttack(user, floorNum, enemyType);
+					if(user->getHealth() <= 0)
+					{
+						//if the enemy's attack kills the user the battle is over
+						inBattle = false;
+					}
 				}
 			}
 			else if(battleChoice.compare("3") == 0)
