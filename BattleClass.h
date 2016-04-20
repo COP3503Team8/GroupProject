@@ -252,6 +252,7 @@ public:
 			cout<<"Your enemy's attack hit!"<<endl;
 			enemyDamage(user, floorNum, enemyType);
 		}
+		cout << endl;
 	}
 
 
