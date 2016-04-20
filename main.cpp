@@ -103,9 +103,15 @@ int main() {
 			}
 			else if(dir == 'p' && cheat){
 				//Gives potion
-				player->addPotion();
-				clearScreen();
-				cout << "You found a packet of Smokin' Notes on the ground!" << endl;
+				if(player->getPotions() => 10){
+					clearScreen();
+					cout << "You can't hold anymore notes!" << endl;
+				}
+				else{
+					player->addPotion();
+					clearScreen();
+					cout << "You found a packet of Smokin' Notes on the ground!" << endl;
+				}
 				continue;
 			}
 			else if(dir == 'k' && cheat){

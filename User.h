@@ -178,7 +178,7 @@ void User::addPotion(){
 		potion++;
 	}
 	else{
-		std::cout << "Your inventory is full!" << std::endl;
+		std::cout << "You can't hold any more notes!" << std::endl;
 	}
 	return;
 }
