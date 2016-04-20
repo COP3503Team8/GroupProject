@@ -15,6 +15,7 @@ There once was a student named Harrison who had trouble in COP3503. The only way
 <li>"e": open and close minimap</li>
 <li>"/": toggle cheats</li>
 <li>"p": toggle godmode (cheats must be enable)</li>
+<li>Enter in multiple values to run. Enemies will still move as fast as you.
 </ul>
 <h2>Battle Mode</h2>
 <ul>
