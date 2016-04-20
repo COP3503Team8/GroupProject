@@ -103,7 +103,7 @@ int main() {
 			}
 			else if(dir == 'p' && cheat){
 				//Gives potion
-				if(player->getPotions() => 10){
+				if(player->getPotions() >= 10){
 					clearScreen();
 					cout << "You can't hold anymore notes!" << endl;
 				}
