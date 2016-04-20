@@ -149,7 +149,7 @@ public:
 				if(user->getHealth() <= 0)
 					{
 						clearScreen();
-						cout<<"You Lose!!"<<endl;
+						cout<<"You failed!!! You must retake COP3503 again!!!"<<endl;
 					}
 				else if(enemyHealth <= 0)
 				{

@@ -180,7 +180,7 @@ int main() {
 	}
 	//Print victory message
 	clearScreen();
-	std::cout << "Congratulations!!! You won!!!" << std::endl;
+	std::cout << "Congratulations!!! Your grade is saved!!!" << std::endl;
 
 	return 0;
 }
