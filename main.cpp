@@ -20,6 +20,7 @@ int main() {
 	std::cin>>dir;
 	cin.clear();
 	cin.ignore(1024, '\n');
+	clearScreen();
 	//Seed time for random generation
 	srand(time(0));
 	//Begin game
