@@ -353,7 +353,7 @@ public:
 			numMonsters -= 1;
 			for (int i = 3; i < 19; i++) {
 				for (int j = 3; j < 19; j++) {
-					if (map[i][j] == 1) {
+					if (map[j][i] == 1) {
 						int* temploc = new int[2];
 						temploc[0] = j;
 						temploc[1] = i;
