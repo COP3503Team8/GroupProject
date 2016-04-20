@@ -86,6 +86,7 @@ public:
 				}
 				else{
 					UsePotion(user);
+					cout << "Your Smokin' Notes has restored your strength!" << endl;
 				}
 				enemyAttack(user, floorNum, enemyType);
 				if(user->getHealth() <= 0)
@@ -201,7 +202,6 @@ public:
 		{
 			//If your attack attempt is a critical fail, you will miss
 			cout<<"Your attack missed!!"<<endl;
-			cout<<endl;
 		}
 		else if(attackChance == 10)
 		{
